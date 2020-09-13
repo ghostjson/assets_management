@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\AdminAuthMiddleware;
 use App\Http\Requests\CreateAssetRequest;
 use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\EditAssetRequest;
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(AdminAuthMiddleware::class);
+    }
+
     public function dashboardView()
     {
         return view('admin.dashboard');

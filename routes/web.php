@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 
 Route::prefix('/admin')->group(function (){
     Route::get('/', [AdminController::class, 'dashboardView'])->name('dashboardView');
@@ -25,4 +26,6 @@ Route::prefix('/admin')->group(function (){
     Route::get('/settings', [AdminController::class, 'settingsView'])->name('settingsView');
 });
 
-Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+Route::get('/login', [AuthController::class, 'loginView'])->name('loginView');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
