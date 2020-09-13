@@ -25,9 +25,9 @@ class CreateAssetsTable extends Migration
             $table->string('memory');
             $table->string('storage');
             $table->string('amount')->nullable();
-            $table->string('bill_image_url')->nullable();
-            $table->text('remarks');
-
+            $table->string('bill')->nullable();
+            $table->string('status')->default('unassigned');
+            $table->text('remarks')->nullable();
             $table->timestamps();
         });
     }

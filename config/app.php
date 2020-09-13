@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*App Level */
+        browner12\helpers\HelperServiceProvider::class,
+
     ],
 
     /*
