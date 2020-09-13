@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
+
+Route::get('/', function (){
+    return redirect('admin/');
+});
 
 Route::prefix('/admin')->group(function (){
     Route::get('/', [AdminController::class, 'dashboardView'])->name('dashboardView');
@@ -24,6 +29,15 @@ Route::prefix('/admin')->group(function (){
 
 
     Route::get('/settings', [AdminController::class, 'settingsView'])->name('settingsView');
+});
+
+Route::prefix('employee')->group(function (){
+    Route::get('/', [EmployeeController::class, 'dashboardView'])->name('employeeDashboardView');
+
+    Route::get('/profile', [EmployeeController::class, 'profileView'])->name('employeeProfileView');
+
+    Route::post('/ticket', [EmployeeController::class, 'createTicket'])->name('createTicket');
+    Route::get('/ticket/{ticket}', [EmployeeController::class, 'ticketView'])->name('ticketView');
 });
 
 Route::get('/login', [AuthController::class, 'loginView'])->name('loginView');
