@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAssetRequest;
+use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\EditAssetRequest;
+use App\Http\Requests\EditEmployeeRequest;
 use App\Models\Asset;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -61,8 +66,46 @@ class AdminController extends Controller
 
     public function employeesView()
     {
-        return view('admin.employees');
+        $employees = User::all();
+        return view('admin.employees', compact('employees'));
     }
+
+    public function employeesCreateView()
+    {
+        $roles = Role::all();
+        return view('admin.create_employees', compact('roles'));
+    }
+
+    public function employeesCreate(CreateEmployeeRequest $request)
+    {
+        User::create($request->validated());
+        return redirect('admin/employees')->with('message', 'Successfully created employee');
+    }
+
+    public function employeesEditView(User $user)
+    {
+        $roles = Role::all();
+        return view('admin.edit_employees', compact(['user', 'roles']));
+    }
+
+    public function employeesEdit(EditEmployeeRequest $request, User $user)
+    {
+        $user->update($request->validated());
+        return redirect('admin/employees')->with('message', 'Successfully updated employees');
+    }
+
+    public function employeesDelete(User $user)
+    {
+        try {
+            $user->delete();
+            return redirect('admin/employees')->with('message', 'Successfully deleted employee');
+        } catch (\Exception $e) {
+            return redirect('admin/employees')->with('error', 'Error during employee deletion');
+        }
+    }
+
+
+
     public function settingsView()
     {
         return view('admin.settings');

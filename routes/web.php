@@ -12,10 +12,16 @@ Route::prefix('/admin')->group(function (){
     Route::post('/assets/create', [AdminController::class, 'assetsCreate'])->name('assetsCreate');
     Route::get('/assets/edit/{asset}', [AdminController::class, 'assetsEditView'])->name('assetsEditView');
     Route::post('/assets/edit/{asset}', [AdminController::class, 'assetsEdit'])->name('assetsEdit');
-
     Route::get('/assets/delete/{asset}', [AdminController::class, 'assetsDelete'])->name('assetsDelete');
 
     Route::get('/employees', [AdminController::class, 'employeesView'])->name('employeesView');
+    Route::get('/employees/create', [AdminController::class, 'employeesCreateView'])->name('employeesCreateView');
+    Route::post('/employees/create', [AdminController::class, 'employeesCreate'])->name('employeesCreate');
+    Route::get('/employees/edit/{user}', [AdminController::class, 'employeesEditView'])->name('employeesEditView');
+    Route::post('/employees/edit/{user}', [AdminController::class, 'employeesEdit'])->name('employeesEdit');
+    Route::get('/employees/delete/{user}', [AdminController::class, 'employeesDelete'])->name('employeesDelete');
+
+
     Route::get('/settings', [AdminController::class, 'settingsView'])->name('settingsView');
 });
 
