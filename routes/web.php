@@ -19,13 +19,21 @@ Route::prefix('/admin')->group(function (){
     Route::get('/assets/edit/{asset}', [AdminController::class, 'assetsEditView'])->name('assetsEditView');
     Route::post('/assets/edit/{asset}', [AdminController::class, 'assetsEdit'])->name('assetsEdit');
     Route::get('/assets/delete/{asset}', [AdminController::class, 'assetsDelete'])->name('assetsDelete');
+    Route::get('/assets/returned/{asset}', [AdminController::class, 'assetReturned'])->name('assetReturned');
 
+    Route::get('/employee/{user}', [AdminController::class, 'employeeView'])->name('employeeView');
     Route::get('/employees', [AdminController::class, 'employeesView'])->name('employeesView');
     Route::get('/employees/create', [AdminController::class, 'employeesCreateView'])->name('employeesCreateView');
     Route::post('/employees/create', [AdminController::class, 'employeesCreate'])->name('employeesCreate');
     Route::get('/employees/edit/{user}', [AdminController::class, 'employeesEditView'])->name('employeesEditView');
     Route::post('/employees/edit/{user}', [AdminController::class, 'employeesEdit'])->name('employeesEdit');
     Route::get('/employees/delete/{user}', [AdminController::class, 'employeesDelete'])->name('employeesDelete');
+
+    Route::get('/ticket/{ticket}', [AdminController::class, 'ticketView'])->name('adminTicketView');
+
+    ROute::get('/ticket/assign/{ticket}/{user}', [AdminController::class, 'ticketAssign'])->name('ticketAssign');
+    ROute::get('/ticket/assign/add/{asset}/{user}', [AdminController::class, 'assignAsset'])->name('assignAsset');
+    ROute::get('/ticket/complete/{ticket}', [AdminController::class, 'completeTicket'])->name('completeTicket');
 
 
     Route::get('/settings', [AdminController::class, 'settingsView'])->name('settingsView');

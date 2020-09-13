@@ -28,7 +28,11 @@
                             <tbody>
                             @foreach($employees as $employee)
                                 <tr>
-                                    <td>{{ $employee->name }}</td>
+                                    <td>
+                                        <a href="{{ route('employeeView', $employee->id) }}">
+                                        {{ $employee->name }}
+                                        </a>
+                                    </td>
                                     <td>{{ $employee->email }}</td>
                                     <td>{{ $employee->role->name }}</td>
                                     <td>

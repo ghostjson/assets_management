@@ -8,7 +8,9 @@ use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\EditAssetRequest;
 use App\Http\Requests\EditEmployeeRequest;
 use App\Models\Asset;
+use App\Models\Assign;
 use App\Models\Role;
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +26,8 @@ class AdminController extends Controller
 
     public function dashboardView()
     {
-        return view('admin.dashboard');
+        $pending_tickets = Ticket::where('status', 'processing')->get();
+        return view('admin.dashboard', compact('pending_tickets'));
     }
 
     public function assetView(Asset $asset)
@@ -78,6 +81,12 @@ class AdminController extends Controller
         return view('admin.employees', compact('employees'));
     }
 
+    public function employeeView(User $user)
+    {
+        $assigned_assets = Assign::getAssetsOf($user->id);
+        return view('admin.employee', compact(['user', 'assigned_assets']));
+    }
+
     public function employeesCreateView()
     {
         $roles = Role::all();
@@ -110,6 +119,47 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return redirect('admin/employees')->with('error', 'Error during employee deletion');
         }
+    }
+
+
+    public function ticketView(Ticket $ticket)
+    {
+        $assets = Assign::getAssetsOf($ticket->employee_id);
+        return view('admin.ticket', compact(['ticket', 'assets']));
+    }
+
+    public function ticketAssign(Ticket $ticket, User $user)
+    {
+        $assigned_assets = Assign::getAssetsOf($user->id);
+        $assets = Asset::where('status', 'unassigned')->get();
+        return view('admin.ticket_assign', compact(['user', 'ticket', 'assets', 'assigned_assets']));
+    }
+
+    public function assignAsset(Asset $asset, User $user)
+    {
+        $asset->status = 'assigned';
+        $asset->save();
+
+        Assign::create([
+            'asset_id' => $asset->id,
+            'user_id' => $user->id
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function assetReturned(Asset $asset)
+    {
+        $asset->returned();
+        return redirect()->back();
+    }
+
+    public function completeTicket(Ticket $ticket)
+    {
+        $ticket->status = 'completed';
+        $ticket->save();
+
+        return redirect('admin');
     }
 
 
