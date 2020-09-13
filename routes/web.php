@@ -44,6 +44,7 @@ Route::prefix('employee')->group(function (){
     Route::get('/', [EmployeeController::class, 'dashboardView'])->name('employeeDashboardView');
 
     Route::get('/profile', [EmployeeController::class, 'profileView'])->name('employeeProfileView');
+    Route::post('/change-password', [EmployeeController::class, 'changePassword'])->name('changePassword');
 
     Route::post('/ticket', [EmployeeController::class, 'createTicket'])->name('createTicket');
     Route::get('/ticket/{ticket}', [EmployeeController::class, 'ticketView'])->name('ticketView');
