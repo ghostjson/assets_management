@@ -31,7 +31,7 @@
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
             <a class="navbar-brand" href="javascript:void(0)">
-                <img src="" class="navbar-brand-img" alt="...">
+                <img src="{!! \App\Models\Setting::get('logo') !!}" class="navbar-brand-img" alt="...">
             </a>
         </div>
         <div class="navbar-inner">

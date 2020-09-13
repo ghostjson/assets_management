@@ -37,6 +37,7 @@ Route::prefix('/admin')->group(function (){
 
 
     Route::get('/settings', [AdminController::class, 'settingsView'])->name('settingsView');
+    Route::post('/settings', [AdminController::class, 'updateSettings'])->name('updateSettings');
 });
 
 Route::prefix('employee')->group(function (){

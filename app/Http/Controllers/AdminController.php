@@ -10,6 +10,7 @@ use App\Http\Requests\EditEmployeeRequest;
 use App\Models\Asset;
 use App\Models\Assign;
 use App\Models\Role;
+use App\Models\Setting;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -168,8 +169,12 @@ class AdminController extends Controller
     {
         return view('admin.settings');
     }
-    public function logout()
+
+    public function updateSettings(Request $request)
     {
-        // TODO logout implement
+        Setting::updateSettings($request->except('_token'));
+
+        return redirect()->back();
     }
+
 }
