@@ -18,7 +18,7 @@ class Setting extends Model
 
     public static function get(string $name)
     {
-        return Setting::where('name', $name)->first()->pluck('value')[0];
+        return Setting::where('name', $name)->first()['value'];
     }
 
     public static function updateSettings(array $settings)

@@ -55,17 +55,18 @@
                                     </p>
 
 
-                                    @if($ticket->status !== 'completed')
-                                        <div>
-                                            <a href="{{ route('ticketAssign', [$ticket->id,$ticket->user->id]) }}">
-                                                <button type="button" class="btn btn-default">Assign</button>
-                                            </a>
-                                            <a href="{{ route('completeTicket', $ticket->id) }}">
-                                                <button type="button" class="btn btn-success">Complete</button>
-                                            </a>
-                                        </div>
-                                    @endif
+
                                 </div>
+                            </div>
+                        @endif
+                        @if($ticket->status !== 'completed')
+                            <div>
+                                <a href="{{ route('ticketAssign', [$ticket->id,$ticket->user->id]) }}">
+                                    <button type="button" class="btn btn-default">Assign</button>
+                                </a>
+                                <a href="{{ route('completeTicket', $ticket->id) }}">
+                                    <button type="button" class="btn btn-success">Complete</button>
+                                </a>
                             </div>
                         @endif
                     </div>

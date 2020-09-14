@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css"
           type="text/css">
 
+    <style>
+        .bg-primary{
+            background-color: {{ \App\Models\Setting::get('website_theme_color') }} !important;
+        }
+        .text-primary{
+            color: {{ \App\Models\Setting::get('website_theme_color') }} !important;
+        }
+    </style>
+
 </head>
 
 <body>

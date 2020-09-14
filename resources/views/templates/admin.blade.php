@@ -23,6 +23,14 @@
           type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
+    <style>
+        .bg-primary{
+            background-color: {{ \App\Models\Setting::get('website_theme_color') }} !important;
+        }
+        .text-primary{
+            color: {{ \App\Models\Setting::get('website_theme_color') }} !important;
+        }
+    </style>
 </head>
 
 <body>

@@ -16,6 +16,15 @@
                                 <label for="logo">Logo</label>
                                 <input type="file" class="form-control" id="logo" name="logo">
                             </div>
+                            <div class="form-group">
+                                <label for="notification_mail">Notification Mail</label>
+                                <input type="email" value="{{ \App\Models\Setting::get('notification_mail') }}" class="form-control" id="notification_mail" name="notification_mail">
+                            </div>
+                            <div class="form-group">
+                                <label for="website_theme_color">Theme Color</label>
+                                <input type="color" value="{{ \App\Models\Setting::get('website_theme_color') }}" class="form-control" id="website_theme_color" name="website_theme_color">
+                            </div>
+
 
 
                             <button type="submit" class="btn btn-default">Update</button>

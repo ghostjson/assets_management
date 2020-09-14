@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -32,7 +33,7 @@ class CreateTicketMail extends Mailable
     {
         return $this->view('mail.create_ticket')
             ->subject('New Ticket Created')
-            ->to('b7413bce5f-7e9ef6@inbox.mailtrap.io')
+            ->to(Setting::get('notification_mail'))
             ->with($this->data);
     }
 }

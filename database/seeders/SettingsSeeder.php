@@ -18,6 +18,14 @@ class SettingsSeeder extends Seeder
             [
                 'name' => 'logo',
                 'value' => '/assets/logo.png'
+            ],
+            [
+                'name' => 'notification_mail',
+                'value' => 'b7413bce5f-7e9ef6@inbox.mailtrap.io'
+            ],
+            [
+                'name' => 'website_theme_color',
+                'value' => '#5e72e4'
             ]
         ];
 
