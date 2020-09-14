@@ -27,10 +27,11 @@
                         <table id="assets" class="display nowrap" style="width:100%">
                             <thead>
                             <tr>
-                                <th>Employee Name</th>
-                                <th>Employee Email</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
                                 <th>Asset Name</th>
                                 <th>Asset Number</th>
+                                <th>Software</th>
                                 <th>Date</th>
                                 <th></th>
                             </tr>
@@ -50,6 +51,7 @@
                                         </a>
                                     </td>
                                     <td>{{ $assign->asset->number }}</td>
+                                    <td>{{ $assign->software }}</td>
                                     <td>{{ $assign->created_at }}</td>
                                     <td>
                                         <a href="{{ route('assetReturned', $assign->asset->id) }}">
@@ -61,8 +63,8 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Employee Name</th>
-                                <th>Employee Email</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
                                 <th>Asset Name</th>
                                 <th>Asset Number</th>
                                 <th>Asset Model</th>

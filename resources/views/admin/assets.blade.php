@@ -34,9 +34,10 @@
                                 <th>Model</th>
                                 <th>Serial Number</th>
                                 <th>Mac ID</th>
-                                <th>Status</th>
                                 <th>Memory</th>
                                 <th>Storage</th>
+                                <th>Status</th>
+        <th></th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -49,9 +50,19 @@
                                     <td>{{ $asset->model }}</td>
                                     <td>{{ $asset->serial_number }}</td>
                                     <td>{{ $asset->mac_id }}</td>
-                                    <td>{{ $asset->status }}</td>
                                     <td>{{ $asset->memory }}</td>
                                     <td>{{ $asset->storage }}</td>
+                                    <td>
+                                        @if($asset->status == 'assigned')
+                                            <span class="badge badge-pill badge-dark">
+                                                {{ $asset->status }}
+                                            </span>
+                                        @else
+                                            <span class="badge badge-pill badge-success">
+                                            Available
+                                            </span>
+                                        @endif
+                                    </td><td></td>
                                     <td>
                                         <a href="{{ route('assetsEditView', $asset->id) }}">
                                             <span class="badge badge-pill badge-warning">Edit</span>
@@ -71,9 +82,11 @@
                                 <th>Model</th>
                                 <th>Serial Number</th>
                                 <th>Mac ID</th>
-                                <th>Status</th>
                                 <th>Memory</th>
                                 <th>Storage</th>
+                                <th>Status</th>
+
+                                <th></th>
                                 <th></th>
                             </tr>
                             </tfoot>

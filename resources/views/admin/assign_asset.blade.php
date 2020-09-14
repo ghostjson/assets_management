@@ -23,7 +23,7 @@
                         <form method="post" action="{{ route('assignCreate') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Employee Name</label>
+                                <label for="name">User Name</label>
                                 <select class="form-control" id="employee_name" name="user_id">
                                     <option></option>
                                     @foreach($employees as $id => $name)
@@ -43,6 +43,10 @@
                                         <option value="{{ $id }}">{{ $number }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="software">Software</label>
+                                <input class="form-control" id="software" name="software">
                             </div>
                             <div class="form-group">
                                 <label for="model">Model</label>

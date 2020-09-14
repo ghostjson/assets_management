@@ -70,7 +70,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('employeesView') }}">
                             <i class="ni ni-single-02 text-primary"></i>
-                            <span class="nav-link-text">Employees</span>
+                            <span class="nav-link-text">Users</span>
                         </a>
                     </li>
 

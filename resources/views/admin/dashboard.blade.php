@@ -25,7 +25,8 @@
                             <thead>
                             <tr>
                                 <th>Ticket ID</th>
-                                <th>Employee Name</th>
+                                <th>User Name</th>
+                                <th>Status</th>
                                 <th>Date</th>
                                 <th></th>
                             </tr>
@@ -35,6 +36,18 @@
                                 <tr>
                                     <td>{{ $ticket->ticket_id }}</td>
                                     <td>{{ $ticket->user->name }}</td>
+                                    <td>
+                                        @if($ticket->status == 'processing')
+                                            <span class="badge badge-pill badge-dark">
+                                                {{ $ticket->status }}
+                                            </span>
+                                        @else
+                                            <span class="badge badge-pill badge-success">
+                                            {{ $ticket->status }}
+                                            </span>
+                                        @endif
+
+                                    </td>
                                     <td>{{ $ticket->created_at }}</td>
                                     <td>
                                         <a href="{{ route('adminTicketView', $ticket->id) }}">
@@ -47,7 +60,8 @@
                             <tfoot>
                             <tr>
                                 <th>Ticket ID</th>
-                                <th>Employee Name</th>
+                                <th>user Name</th>
+                                <th>Status</th>
                                 <th>Date</th>
                                 <th></th>
                             </tr>
@@ -69,7 +83,8 @@
                             <thead>
                             <tr>
                                 <th>Ticket ID</th>
-                                <th>Employee Name</th>
+                                <th>User Name</th>
+                                <td>Status</td>
                                 <th>Date</th>
                                 <th></th>
                             </tr>
@@ -79,6 +94,18 @@
                                 <tr>
                                     <td>{{ $ticket->ticket_id }}</td>
                                     <td>{{ $ticket->user->name }}</td>
+                                    <td>
+                                    @if($ticket->status == 'processing')
+                                        <span class="badge badge-pill badge-dark">
+                                                {{ $ticket->status }}
+                                            </span>
+                                    @else
+                                        <span class="badge badge-pill badge-success">
+                                            {{ $ticket->status }}
+                                            </span>
+                                    @endif
+
+                                    </td>
                                     <td>{{ $ticket->created_at }}</td>
                                     <td>
                                         <a href="{{ route('adminTicketView', $ticket->id) }}">
@@ -91,7 +118,8 @@
                             <tfoot>
                             <tr>
                                 <th>Ticket ID</th>
-                                <th>Employee Name</th>
+                                <th>User Name</th>
+                                <th>Status</th>
                                 <th>Date</th>
                                 <th></th>
                             </tr>

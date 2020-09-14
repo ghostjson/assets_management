@@ -9,9 +9,9 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between">
-                        <h2>Employees</h2>
+                        <h2>Users</h2>
                         <a href="{{ route('employeesCreateView') }}">
-                            <button type="button" class="btn btn-default btn-sm">New Employee</button>
+                            <button type="button" class="btn btn-default btn-sm">New User</button>
                         </a>
 
                     </div>
