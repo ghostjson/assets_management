@@ -54,6 +54,9 @@
                                     <td>{{ $assign->software }}</td>
                                     <td>{{ $assign->created_at }}</td>
                                     <td>
+                                        <a href="{{ route('assignView', $assign->id) }}">
+                                            <span class="badge badge-pill badge-default">View</span>
+                                        </a>
                                         <a href="{{ route('assetReturned', $assign->asset->id) }}">
                                             <span class="badge badge-pill badge-success">Returned</span>
                                         </a>
@@ -67,7 +70,9 @@
                                 <th>User Email</th>
                                 <th>Asset Name</th>
                                 <th>Asset Number</th>
-                                <th>Asset Model</th>
+                                <th>Software</th>
+                                <th>Date</th>
+
                                 <th></th>
                             </tr>
                             </tfoot>

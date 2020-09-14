@@ -27,7 +27,6 @@ class CreateAssetsTable extends Migration
             $table->string('amount')->nullable();
             $table->string('bill')->nullable();
             $table->string('status')->default('unassigned');
-            $table->text('remarks')->nullable();
             $table->timestamps();
         });
     }

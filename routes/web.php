@@ -28,6 +28,7 @@ Route::prefix('/admin')->group(function (){
     Route::get('/employee/{user}/get', [AdminController::class, 'getEmployee'])->name('getEmployee');
     Route::get('/asset/{asset}/get', [AdminController::class, 'getAsset'])->name('getAsset');
     Route::get('/assigns/download', [AdminController::class, 'assignDownload'])->name('assignDownload');
+    Route::get('/assign/{assign}', [AdminController::class, 'assignView'])->name('assignView');
 
     Route::get('/employee/{user}', [AdminController::class, 'employeeView'])->name('employeeView');
     Route::get('/employees', [AdminController::class, 'employeesView'])->name('employeesView');
@@ -62,13 +63,3 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('loginView');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/test', function (){
-    \Illuminate\Support\Facades\Mail::send(
-        new \App\Mail\CreateTicketMail([
-            'username' => auth()->user()->name,
-            'email' => auth()->user()->email,
-            'subject' => 'Test Subject',
-            'content' => 'Content test'
-        ])
-    );
-});

@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="remarks">Remarks</label>
-                                <textarea disabled class="form-control" name="remarks" id="remarks" rows="3"></textarea>
+                                <textarea class="form-control" name="remarks" id="remarks" rows="3"></textarea>
                             </div>
 
 
@@ -112,7 +112,6 @@
                         $('#mac_id').val(data.mac_id);
                         $('#memory').val(data.memory);
                         $('#storage').val(data.storage);
-                        $('#remarks').val(data.remarks);
                     });
             })
         });

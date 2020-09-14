@@ -34,7 +34,6 @@ class CreateAssetRequest extends FormRequest
             'amount' => 'nullable',
             'storage' => 'required',
             'bill' => 'nullable',
-            'remarks' => 'nullable',
         ];
     }
 }

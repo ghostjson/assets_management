@@ -26,7 +26,8 @@ class CreateAssignRequest extends FormRequest
         return [
             'user_id' => 'required',
             'software' => 'nullable',
-            'asset_id' => 'required'
+            'asset_id' => 'required',
+            'remarks' => 'nullable'
         ];
     }
 }

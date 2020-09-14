@@ -206,6 +206,11 @@ class AdminController extends Controller
         return redirect()->route('assignAssetsView')->with('message', 'successfully assigned asset');
     }
 
+    public function assignView(Assign $assign)
+    {
+        return view('admin.assign', compact('assign'));
+    }
+
 
     public function getEmployee(User $user): string
     {

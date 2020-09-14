@@ -27,7 +27,8 @@
                             </thead>
                             <tbody>
                             @foreach($employees as $employee)
-                                <tr>
+                                @if($employee->email !== 'admin@admin.com') {{-- super admin is invisible. --}}
+                                    <tr>
                                     <td>
                                         <a href="{{ route('employeeView', $employee->id) }}">
                                         {{ $employee->name }}
@@ -44,6 +45,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                             </tbody>
                             <tfoot>
