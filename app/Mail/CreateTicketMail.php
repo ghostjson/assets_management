@@ -11,14 +11,16 @@ class CreateTicketMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $data;
+
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $data
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -29,7 +31,8 @@ class CreateTicketMail extends Mailable
     public function build()
     {
         return $this->view('mail.create_ticket')
-            ->subject('test message')
-            ->to('b7413bce5f-7e9ef6@inbox.mailtrap.io');
+            ->subject('New Ticket Created')
+            ->to('b7413bce5f-7e9ef6@inbox.mailtrap.io')
+            ->with($this->data);
     }
 }

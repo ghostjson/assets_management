@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static orderBy(string $string, string $string1)
  * @method static where(string $string)
  * @property mixed id
+ * @property mixed content
+ * @property mixed user
  */
 class Ticket extends Model
 {

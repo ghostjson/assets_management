@@ -27,6 +27,7 @@ class EmployeeController extends Controller
     public function createTicket(CreateTicketRequest $request)
     {
         Ticket::create([
+            'subject' => $request->input('subject'),
             'content' => $request->input('content'),
             'employee_id' => auth()->id()
         ]);

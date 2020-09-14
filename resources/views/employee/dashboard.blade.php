@@ -9,9 +9,14 @@
                     <div class="card-header">
                         <h2>Create Ticket</h2>
                     </div>
+                    @include('templates.messages')
                     <form action="{{ route('createTicket') }}" method="post">
                         @csrf
                         <div class="card-body">
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input id="subject" name="subject" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label for="content">Content</label>
                                 <textarea class="form-control" id="content" name="content" rows="3"></textarea>

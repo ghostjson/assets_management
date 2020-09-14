@@ -64,6 +64,11 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/test', function (){
     \Illuminate\Support\Facades\Mail::send(
-        new \App\Mail\CreateTicketMail()
+        new \App\Mail\CreateTicketMail([
+            'username' => auth()->user()->name,
+            'email' => auth()->user()->email,
+            'subject' => 'Test Subject',
+            'content' => 'Content test'
+        ])
     );
 });
