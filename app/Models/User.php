@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 /**
  * @method static create(array $validated)
+ * @method static where(string $string, int $int)
  * @property mixed id
  */
 class User extends Authenticatable

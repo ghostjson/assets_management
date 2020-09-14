@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\AdminAuthMiddleware;
 use App\Http\Requests\CreateAssetRequest;
+use App\Http\Requests\CreateAssignRequest;
 use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\EditAssetRequest;
 use App\Http\Requests\EditEmployeeRequest;
@@ -13,6 +14,7 @@ use App\Models\Role;
 use App\Models\Setting;
 use App\Models\Ticket;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -163,6 +165,41 @@ class AdminController extends Controller
         return redirect('admin');
     }
 
+
+    public function assignAssetsView()
+    {
+        $assigns = Assign::orderBy('create_at', 'desc')->get();
+        return view('admin.assign_assets', compact('assigns'));
+    }
+
+    public function assignAssetView()
+    {
+        $employees = User::where('role_id', 2)->get()->pluck('name','id');
+        $assets = Asset::where('status', 'unassigned')->get()->pluck('number', 'id');
+        return view('admin.assign_asset', compact(['employees', 'assets']));
+    }
+
+    public function assignCreate(CreateAssignRequest $request)
+    {
+        Assign::create($request->validated());
+
+        Asset::find($request->input('asset_id'))->update([
+            'status' => 'assigned'
+        ]);
+
+        return redirect()->route('assignAssetsView')->with('message', 'successfully assigned asset');
+    }
+
+
+    public function getEmployee(User $user) : string
+    {
+        return $user->toJson();
+    }
+
+    public function getAsset(Asset $asset) : string
+    {
+        return $asset->toJson();
+    }
 
 
     public function settingsView()

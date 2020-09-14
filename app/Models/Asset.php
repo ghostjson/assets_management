@@ -8,7 +8,8 @@ use Illuminate\Http\UploadedFile;
 
 /**
  * @method static create(array $validated)
- * @method static where(string $string)
+ * @method static where(string $string, string $string='')
+ * @method static find(int $id)
  * @property mixed id
  */
 class Asset extends Model
