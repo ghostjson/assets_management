@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26d4ae7b6081c00376bf25a9c7f7eebc",
+    "content-hash": "08358ad7fca8712c617fbb11d9970d90",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1198,6 +1198,84 @@
                 }
             ],
             "time": "2020-08-18T01:19:12+00:00"
+        },
+        {
+            "name": "league/csv",
+            "version": "9.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/csv.git",
+                "reference": "634322df4aed210fdfbb7c94e434dc860da733d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/634322df4aed210fdfbb7c94e434dc860da733d9",
+                "reference": "634322df4aed210fdfbb7c94e434dc860da733d9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpstan/phpstan": "^0.12.0",
+                "phpstan/phpstan-phpunit": "^0.12.0",
+                "phpstan/phpstan-strict-rules": "^0.12.0",
+                "phpunit/phpunit": "^8.5"
+            },
+            "suggest": {
+                "ext-dom": "Required to use the XMLConverter and or the HTMLConverter classes",
+                "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Csv\\": "src"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CSV data manipulation made easy in PHP",
+            "homepage": "http://csv.thephpleague.com",
+            "keywords": [
+                "convert",
+                "csv",
+                "export",
+                "filter",
+                "import",
+                "read",
+                "transform",
+                "write"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-09-05T08:40:12+00:00"
         },
         {
             "name": "league/flysystem",
@@ -4550,6 +4628,62 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "usmanhalalit/laracsv",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/usmanhalalit/laracsv.git",
+                "reference": "98016abe4c55e7ed3c97a3e0b930cbac58374f57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/usmanhalalit/laracsv/zipball/98016abe4c55e7ed3c97a3e0b930cbac58374f57",
+                "reference": "98016abe4c55e7ed3c97a3e0b930cbac58374f57",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": ">=5.2",
+                "league/csv": "^9.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.8",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laracsv\\": "src/Laracsv/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhammad Usman",
+                    "email": "hi@usman.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel package to easily generate CSV files from Eloquent model.",
+            "homepage": "https://github.com/usmanhalalit/laracsv",
+            "keywords": [
+                "csv",
+                "eloquent",
+                "export",
+                "laravel"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/usmanhalalit",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-19T09:31:32+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

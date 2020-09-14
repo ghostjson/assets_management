@@ -17,6 +17,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use League\Csv\CannotInsertRecord;
 
 class AdminController extends Controller
 {
@@ -76,6 +77,20 @@ class AdminController extends Controller
         }
     }
 
+    public function assetsDownload()
+    {
+        $assets = Asset::all();
+        $attributes = ['name', 'type', 'number', 'serial_number', 'mac_id', 'memory', 'storage', 'amount'];
+
+        $csvExport = new \Laracsv\Export();
+
+        try {
+            $csvExport->build($assets, $attributes)->download();
+        } catch (CannotInsertRecord $e) {
+            return redirect()->back()->withErrors('error', 'error inserting csv');
+        }
+
+    }
 
 
     public function employeesView()
@@ -174,7 +189,7 @@ class AdminController extends Controller
 
     public function assignAssetView()
     {
-        $employees = User::where('role_id', 2)->get()->pluck('name','id');
+        $employees = User::where('role_id', 2)->get()->pluck('name', 'id');
         $assets = Asset::where('status', 'unassigned')->get()->pluck('number', 'id');
         return view('admin.assign_asset', compact(['employees', 'assets']));
     }
@@ -191,14 +206,45 @@ class AdminController extends Controller
     }
 
 
-    public function getEmployee(User $user) : string
+    public function getEmployee(User $user): string
     {
         return $user->toJson();
     }
 
-    public function getAsset(Asset $asset) : string
+    public function getAsset(Asset $asset): string
     {
         return $asset->toJson();
+    }
+
+    public function assignDownload()
+    {
+        $assignments = collect();
+        $assigns = Assign::all();
+
+        foreach ($assigns as $assign) {
+            $assignments->push(collect([
+                'name' => $assign->user->name,
+                'email' => $assign->user->email,
+                'asset name' => $assign->asset->name,
+                'asset model' => $assign->asset->model,
+                'asset number' => $assign->asset->number,
+                'asset type' => $assign->asset->type,
+                'asset mac id' => $assign->asset->mac_id,
+                'asset memory' => $assign->asset->memory,
+                'asset storage' => $assign->asset->storage,
+            ]));
+        }
+
+        $attributes = array_keys($assignments[0]->toArray());
+
+        $csvExport = new \Laracsv\Export();
+
+        try {
+            $csvExport->build($assignments, $attributes)->download();
+        } catch (CannotInsertRecord $e) {
+            return redirect()->back()->withErrors('error', 'error inserting csv');
+        }
+
     }
 
 

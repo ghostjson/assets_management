@@ -20,12 +20,14 @@ Route::prefix('/admin')->group(function (){
     Route::post('/assets/edit/{asset}', [AdminController::class, 'assetsEdit'])->name('assetsEdit');
     Route::get('/assets/delete/{asset}', [AdminController::class, 'assetsDelete'])->name('assetsDelete');
     Route::get('/assets/returned/{asset}', [AdminController::class, 'assetReturned'])->name('assetReturned');
+    Route::get('/assets/download', [AdminController::class, 'assetsDownload'])->name('assetsDownload');
 
     Route::get('/assign-assets', [AdminController::class, 'assignAssetsView'])->name('assignAssetsView');
     Route::get('/assign-assets/create', [AdminController::class, 'assignAssetView'])->name('assignAssetView');
     Route::post('/assign-assets/create', [AdminController::class, 'assignCreate'])->name('assignCreate');
     Route::get('/employee/{user}/get', [AdminController::class, 'getEmployee'])->name('getEmployee');
     Route::get('/asset/{asset}/get', [AdminController::class, 'getAsset'])->name('getAsset');
+    Route::get('/assigns/download', [AdminController::class, 'assignDownload'])->name('assignDownload');
 
     Route::get('/employee/{user}', [AdminController::class, 'employeeView'])->name('employeeView');
     Route::get('/employees', [AdminController::class, 'employeesView'])->name('employeesView');

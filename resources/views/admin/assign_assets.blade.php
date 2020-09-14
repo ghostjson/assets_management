@@ -10,9 +10,15 @@
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between">
                         <h2>Assignments</h2>
-                        <a href="{{ route('assignAssetView') }}">
-                            <button type="button" class="btn btn-default btn-sm">New Assign</button>
-                        </a>
+                        <div>
+                            <a href="{{ route('assignDownload') }}">
+                                <button type="button" class="btn btn-default btn-sm">Download CSV</button>
+                            </a>
+                            <a href="{{ route('assignAssetView') }}">
+                                <button type="button" class="btn btn-default btn-sm">New Assign</button>
+                            </a>
+                        </div>
+
 
                     </div>
                     <div class="card-body">

@@ -10,9 +10,16 @@
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between">
                         <h2>Assets</h2>
+
+                        <div>
+                            <a href="{{ route('assetsDownload') }}">
+                                <button type="button" class="btn btn-default btn-sm">Download CSV</button>
+                            </a>
                             <a href="{{ route('assetsCreateView') }}">
                                 <button type="button" class="btn btn-default btn-sm">New Asset</button>
                             </a>
+                        </div>
+
 
                     </div>
                     <div class="card-body">
