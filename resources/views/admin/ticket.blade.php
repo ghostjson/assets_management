@@ -23,47 +23,51 @@
 
                         <br>
 
-                        <div>
-                            <h3>Assets Already Have</h3>
-                            <div class="table-responsive">
-                                <div>
-                                    <table class="table align-items-center">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col" class="sort" data-sort="name">Name</th>
-                                            <th scope="col" class="sort" data-sort="name">Model</th>
-                                            <th scope="col" class="sort" data-sort="name">Serial Number</th>
-                                            <th scope="col" class="sort" data-sort="name">Issued Date</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="list">
-                                        @foreach($assets as $asset)
+                        @if(count($assets) > 0)
+                            <div>
+                                <h3>Assets Already Have</h3>
+                                <div class="table-responsive">
+                                    <div>
+                                        <table class="table align-items-center">
+                                            <thead class="thead-light">
                                             <tr>
-                                                <td>{{ $asset->name }}</td>
-                                                <td>{{ $asset->model }}</td>
-                                                <td>{{ $asset->serial_number }}</td>
-                                                <td>{{ $asset->updated_at }}</td>
-                                            <tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                <th scope="col" class="sort" data-sort="name">Name</th>
+                                                <th scope="col" class="sort" data-sort="name">Model</th>
+                                                <th scope="col" class="sort" data-sort="name">Serial Number</th>
+                                                <th scope="col" class="sort" data-sort="name">Issued Date</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="list">
+                                            @foreach($assets as $asset)
+                                                <tr>
+                                                    <td>{{ $asset->name }}</td>
+                                                    <td>{{ $asset->model }}</td>
+                                                    <td>{{ $asset->serial_number }}</td>
+                                                    <td>{{ $asset->updated_at }}</td>
+                                                <tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                <p style="margin-top: 20px;">
-                                    Date: {{ $ticket->created_at }}
-                                </p>
+                                    <p style="margin-top: 20px;">
+                                        Date: {{ $ticket->created_at }}
+                                    </p>
 
 
-                                <div>
-                                    <a href="{{ route('ticketAssign', [$ticket->id,$ticket->user->id]) }}">
-                                        <button type="button" class="btn btn-default">Assign</button>
-                                    </a>
-                                    <a href="{{ route('completeTicket', $ticket->id) }}">
-                                        <button type="button" class="btn btn-success">Complete</button>
-                                    </a>
+                                    @if($ticket->status !== 'completed')
+                                        <div>
+                                            <a href="{{ route('ticketAssign', [$ticket->id,$ticket->user->id]) }}">
+                                                <button type="button" class="btn btn-default">Assign</button>
+                                            </a>
+                                            <a href="{{ route('completeTicket', $ticket->id) }}">
+                                                <button type="button" class="btn btn-success">Complete</button>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
