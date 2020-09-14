@@ -183,7 +183,7 @@ class AdminController extends Controller
 
     public function assignAssetsView()
     {
-        $assigns = Assign::orderBy('create_at', 'desc')->get();
+        $assigns = Assign::orderBy('created_at', 'desc')->get();
         return view('admin.assign_assets', compact('assigns'));
     }
 
