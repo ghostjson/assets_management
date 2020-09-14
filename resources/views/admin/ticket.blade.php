@@ -14,6 +14,8 @@
                     <div class="card-body">
                         <h3>Name</h3>
                         <p>{{ $ticket->user->name }}</p> <br>
+                        <h3>Subject: {{ $ticket->subject }}</h3>
+                        <br>
                         <h3>Content</h3>
                         <p>
                             {{ $ticket->content }}
@@ -56,7 +58,7 @@
                                     <a href="{{ route('ticketAssign', [$ticket->id,$ticket->user->id]) }}">
                                         <button type="button" class="btn btn-default">Assign</button>
                                     </a>
-                                    <a href="#">
+                                    <a href="{{ route('completeTicket', $ticket->id) }}">
                                         <button type="button" class="btn btn-success">Complete</button>
                                     </a>
                                 </div>

@@ -13,6 +13,8 @@
                     </div>
                     <div class="card-body">
 
+                        @if(count($assigned_assets) > 0)
+
                         <div>
                             <h3>Assets Already Have</h3>
                             <div class="table-responsive">
@@ -48,6 +50,11 @@
 
                             </div>
                         </div>
+                        @else
+                            <div>
+                                <h3>No assigned assets</h3>
+                            </div>
+                        @endif
 
                         <a href="/">Back to Home</a>
                     </div>

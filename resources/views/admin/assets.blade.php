@@ -12,9 +12,11 @@
                         <h2>Assets</h2>
 
                         <div>
-                            <a href="{{ route('assetsDownload') }}">
-                                <button type="button" class="btn btn-default btn-sm">Download CSV</button>
-                            </a>
+                            @if(count($assets) > 0)
+                                <a href="{{ route('assetsDownload') }}">
+                                    <button type="button" class="btn btn-default btn-sm">Download CSV</button>
+                                </a>
+                            @endif
                             <a href="{{ route('assetsCreateView') }}">
                                 <button type="button" class="btn btn-default btn-sm">New Asset</button>
                             </a>

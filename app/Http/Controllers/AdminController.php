@@ -30,7 +30,7 @@ class AdminController extends Controller
 
     public function dashboardView()
     {
-        $pending_tickets = Ticket::where('status', 'processing')->get();
+        $pending_tickets = Ticket::where('status', 'processing')->orderBy('created_at', 'desc')->get();
         return view('admin.dashboard', compact('pending_tickets'));
     }
 
