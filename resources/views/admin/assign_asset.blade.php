@@ -45,8 +45,16 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="software">OS</label>
+                                <input class="form-control" id="os" name="os">
+                            </div>
+                            <div class="form-group">
                                 <label for="software">Software</label>
                                 <input class="form-control" id="software" name="software">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" disabled class="form-control" id="name" name="name" >
                             </div>
                             <div class="form-group">
                                 <label for="model">Model</label>
@@ -112,6 +120,7 @@
                         $('#mac_id').val(data.mac_id);
                         $('#memory').val(data.memory);
                         $('#storage').val(data.storage);
+                        $('#name').val(data.name);
                     });
             })
         });

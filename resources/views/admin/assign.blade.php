@@ -64,6 +64,12 @@
                                     <td>Asset Number</td>
                                     <td>{{ $assign->asset->number }}</td>
                                 </tr>
+                                @if($assign->os)
+                                <tr>
+                                    <td>OS</td>
+                                    <td>{{ $assign->os }}</td>
+                                </tr>
+                                @endif
                                 @if($assign->software)
                                     <tr>
                                         <td>Software</td>
