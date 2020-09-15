@@ -67,7 +67,7 @@
                                         <a href="{{ route('assetsEditView', $asset->id) }}">
                                             <span class="badge badge-pill badge-warning">Edit</span>
                                         </a>
-                                        <a href="{{ route('assetsDelete', $asset->id) }}">
+                                        <a class="delete" style="cursor: pointer" onclick='deleteAsset("{{ route('assetsDelete', $asset->id) }}")'>
                                             <span class="badge badge-pill badge-danger">Delete</span>
                                         </a>
                                     </td>
@@ -106,5 +106,14 @@
                 dom: 'Bfrtip'
             });
         });
+    </script>
+
+
+    <script>
+        function deleteAsset(url) {
+            if(confirm("Are you sure you want to delete this asset?")){
+                location.href = url;
+            }
+        }
     </script>
 @endsection
