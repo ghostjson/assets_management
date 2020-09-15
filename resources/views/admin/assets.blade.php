@@ -30,7 +30,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Type</th>
-                                <th>Number</th>
+                                <th>Asset Number</th>
                                 <th>Model</th>
                                 <th>Serial Number</th>
                                 <th>Mac ID</th>
@@ -78,7 +78,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Type</th>
-                                <th>Number</th>
+                                <th>Asset Number</th>
                                 <th>Model</th>
                                 <th>Serial Number</th>
                                 <th>Mac ID</th>
