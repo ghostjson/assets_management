@@ -173,8 +173,9 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function completeTicket(Ticket $ticket)
+    public function completeTicket(Request $request, Ticket $ticket)
     {
+        $ticket->notes = $request->input('notes');
         $ticket->status = 'completed';
         $ticket->save();
 

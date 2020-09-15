@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed id
  * @property mixed content
  * @property mixed user
+ * @property mixed|string status
+ * @property mixed notes
  */
 class Ticket extends Model
 {

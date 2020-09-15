@@ -55,18 +55,27 @@
                                     </p>
 
 
-
                                 </div>
                             </div>
                         @endif
                         @if($ticket->status !== 'completed')
-                            <div>
-                                <a href="{{ route('ticketAssign', [$ticket->id,$ticket->user->id]) }}">
-                                    <button type="button" class="btn btn-default">Assign</button>
-                                </a>
-                                <a href="{{ route('completeTicket', $ticket->id) }}">
-                                    <button type="button" class="btn btn-success">Complete</button>
-                                </a>
+                            <form method="post" action="{{ route('completeTicket', $ticket->id) }}">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="notes">Notes</label>
+                                    <textarea class="form-control" id="notes" name="notes" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success">Complete</button>
+
+                            </form>
+                        @else
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Remarks</h3>
+                                    <p>
+                                        {{ $ticket->notes }}
+                                    </p>
+                                </div>
                             </div>
                         @endif
                     </div>

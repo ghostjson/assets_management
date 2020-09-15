@@ -42,7 +42,7 @@ Route::prefix('/admin')->group(function (){
 
     ROute::get('/ticket/assign/{ticket}/{user}', [AdminController::class, 'ticketAssign'])->name('ticketAssign');
     ROute::get('/ticket/assign/add/{asset}/{user}', [AdminController::class, 'assignAsset'])->name('assignAsset');
-    ROute::get('/ticket/complete/{ticket}', [AdminController::class, 'completeTicket'])->name('completeTicket');
+    ROute::post('/ticket/complete/{ticket}', [AdminController::class, 'completeTicket'])->name('completeTicket');
 
 
     Route::get('/settings', [AdminController::class, 'settingsView'])->name('settingsView');
