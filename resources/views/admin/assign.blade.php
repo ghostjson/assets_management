@@ -20,6 +20,11 @@
                                 {{--                                    </a>--}}
                                 {{--                                </div>--}}
                             </div>
+                            <div>
+                                <a href="{{ route('assignEditView', $assign->id) }}">
+                                    <button type="button" class="btn btn-warning">Edit</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

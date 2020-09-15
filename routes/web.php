@@ -29,6 +29,8 @@ Route::prefix('/admin')->group(function (){
     Route::get('/asset/{asset}/get', [AdminController::class, 'getAsset'])->name('getAsset');
     Route::get('/assigns/download', [AdminController::class, 'assignDownload'])->name('assignDownload');
     Route::get('/assign/{assign}', [AdminController::class, 'assignView'])->name('assignView');
+    Route::get('/assign/edit/{assign}', [AdminController::class, 'assignEditView'])->name('assignEditView');
+    Route::post('/assign/edit/{assign}', [AdminController::class, 'assignUpdate'])->name('assignUpdate');
 
     Route::get('/employee/{user}', [AdminController::class, 'employeeView'])->name('employeeView');
     Route::get('/employees', [AdminController::class, 'employeesView'])->name('employeesView');

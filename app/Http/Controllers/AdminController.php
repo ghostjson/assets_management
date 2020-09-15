@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\AdminAuthMiddleware;
+use App\Http\Requests\AssignUpdateRequest;
 use App\Http\Requests\CreateAssetRequest;
 use App\Http\Requests\CreateAssignRequest;
 use App\Http\Requests\CreateEmployeeRequest;
@@ -205,6 +206,17 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('assignAssetsView')->with('message', 'successfully assigned asset');
+    }
+
+    public function assignEditView(Assign $assign)
+    {
+        return view('admin.assign_edit', compact('assign'));
+    }
+
+    public function assignUpdate(AssignUpdateRequest $request, Assign $assign)
+    {
+        $assign->update($request->validated());
+        return redirect()->route('assignView', $assign->id);
     }
 
     public function assignView(Assign $assign)
