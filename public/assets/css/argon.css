@@ -29838,3 +29838,10 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 {
     background: transparent;
 }
+
+
+/* App Level */
+#assets_wrapper
+{
+    overflow: auto;
+}
