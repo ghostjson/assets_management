@@ -75,6 +75,16 @@
                     </div>
                 </div>
             </div>
+        @else
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>No assets are assigned.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @endif
         <div class="row" style="margin-top: 30px;">
             <div class="col">

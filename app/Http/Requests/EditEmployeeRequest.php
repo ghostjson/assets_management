@@ -26,7 +26,8 @@ class EditEmployeeRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'role_id' => 'required'
+            'role_id' => 'required',
+            'password' => 'nullable|min:8'
         ];
     }
 }

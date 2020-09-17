@@ -127,7 +127,13 @@ class AdminController extends Controller
 
     public function employeesEdit(EditEmployeeRequest $request, User $user)
     {
-        $user->update($request->validated());
+        $data = $request->validated();
+
+        if(is_null($data['password'])) {
+            unset($data['password']);
+        }
+
+        $user->update($data);
         return redirect('admin/employees')->with('message', 'Successfully updated employees');
     }
 

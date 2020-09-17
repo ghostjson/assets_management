@@ -29,6 +29,11 @@
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label for="role">Password</label>
+                                <input name="password" class="form-control" type="text" placeholder="Enter New Password">
+                            </div>
+
                             <button type="submit" class="btn btn-default">Update</button>
                         </form>
                     </div>
