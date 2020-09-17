@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTicketRequest;
 use App\Http\Requests\UpdatePasswordRequest;
+use App\Models\Asset;
+use App\Models\Assign;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -17,8 +19,15 @@ class EmployeeController extends Controller
     public function dashboardView()
     {
         $tickets = Ticket::orderBy('created_at', 'desc')->limit(10)->get();
-        return view('employee.dashboard', compact('tickets'));
+        $assigns = Assign::where('user_id', auth()->id())->get();
+        return view('employee.dashboard', compact(['tickets', 'assigns']));
     }
+
+    public function assetView(Assign $assign)
+    {
+        return view('employee.asset', compact('assign'));
+    }
+
     public function profileView()
     {
         return view('employee.profile');
