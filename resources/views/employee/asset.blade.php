@@ -62,7 +62,7 @@
                                 </tr>
                                 <tr>
                                     <td>Software</td>
-                                    <td>{{ $assign->asset->software }}</td>
+                                    <td>{{ $assign->software }}</td>
                                 </tr>
                                 <tr>
                                     <td>OS</td>
