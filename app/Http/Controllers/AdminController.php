@@ -9,8 +9,10 @@ use App\Http\Requests\CreateAssignRequest;
 use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\EditAssetRequest;
 use App\Http\Requests\EditEmployeeRequest;
+use App\Http\Requests\LicenseCreateRequest;
 use App\Models\Asset;
 use App\Models\Assign;
+use App\Models\License;
 use App\Models\Role;
 use App\Models\Setting;
 use App\Models\Ticket;
@@ -54,7 +56,8 @@ class AdminController extends Controller
 
     public function assetsEditView(Asset $asset)
     {
-        return view('admin.edit_assets', compact('asset'));
+
+        return view('admin.edit_assets', compact(['asset']));
     }
 
     public function assetsCreate(CreateAssetRequest $request)
@@ -200,11 +203,13 @@ class AdminController extends Controller
     {
         $employees = User::where('role_id', 2)->get()->pluck('name', 'id');
         $assets = Asset::where('status', 'unassigned')->get()->pluck('number', 'id');
-        return view('admin.assign_asset', compact(['employees', 'assets']));
+        $licenses = License::all();
+        return view('admin.assign_asset', compact(['employees', 'assets', 'licenses']));
     }
 
     public function assignCreate(CreateAssignRequest $request)
     {
+
         Assign::create($request->validated());
 
         Asset::find($request->input('asset_id'))->update([
@@ -216,7 +221,8 @@ class AdminController extends Controller
 
     public function assignEditView(Assign $assign)
     {
-        return view('admin.assign_edit', compact('assign'));
+        $licenses = License::all();
+        return view('admin.assign_edit', compact(['assign', 'licenses']));
     }
 
     public function assignUpdate(AssignUpdateRequest $request, Assign $assign)
@@ -270,6 +276,43 @@ class AdminController extends Controller
             return redirect()->back()->withErrors('error', 'error inserting csv');
         }
 
+    }
+
+    public function licensesView()
+    {
+        $licenses = License::all();
+        return view('admin.licenses', compact('licenses'));
+    }
+
+    public function licensesCreateView()
+    {
+        $licenses = License::all();
+        return view('admin.create_license', compact('licenses'));
+    }
+
+    public function licenseCreate(LicenseCreateRequest $request)
+    {
+        License::create($request->validated());
+
+        return redirect()->route('licensesView');
+    }
+
+    public function licenseEditView(License $license)
+    {
+        return view('admin.license_edit', compact('license'));
+    }
+
+    public function licenseEdit(License $license, LicenseCreateRequest $request)
+    {
+        $license->update($request->validated());
+
+        if($license->license_type === 'Software Licensing')
+        {
+            $license->subscription_name = '';
+            $license->save();
+        }
+
+        return redirect()->route('licensesView');
     }
 
 

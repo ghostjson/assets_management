@@ -31,7 +31,6 @@
                                 <th>User Email</th>
                                 <th>Asset Name</th>
                                 <th>Asset Number</th>
-                                <th>Software</th>
                                 <th>Date</th>
                                 <th></th>
                             </tr>
@@ -51,7 +50,6 @@
                                         </a>
                                     </td>
                                     <td>{{ $assign->asset->number }}</td>
-                                    <td>{{ $assign->software }}</td>
                                     <td>{{ $assign->created_at }}</td>
                                     <td>
                                         <a href="{{ route('assignView', $assign->id) }}">
@@ -70,7 +68,6 @@
                                 <th>User Email</th>
                                 <th>Asset Name</th>
                                 <th>Asset Number</th>
-                                <th>Software</th>
                                 <th>Date</th>
 
                                 <th></th>

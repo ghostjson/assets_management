@@ -70,15 +70,21 @@
                                     <td>{{ $assign->asset->number }}</td>
                                 </tr>
                                 @if($assign->os)
-                                <tr>
-                                    <td>OS</td>
-                                    <td>{{ $assign->os }}</td>
-                                </tr>
+                                    <tr>
+                                        <td>OS</td>
+                                        <td>{{ $assign->os }}</td>
+                                    </tr>
                                 @endif
                                 @if($assign->software)
                                     <tr>
                                         <td>Software</td>
-                                        <td>{{ $assign->software }}</td>
+                                        <td>
+                                            <ul>
+                                            @foreach($assign->software as $soft)
+                                                <li>{{ $soft->product }}</li>
+                                            @endforeach
+                                            </ul>
+                                        </td>
                                     </tr>
                                 @endif
 

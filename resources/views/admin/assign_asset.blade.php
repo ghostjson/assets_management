@@ -50,7 +50,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="software">Software</label>
-                                <input class="form-control" id="software" name="software">
+                                <select class="form-control" id="software" name="software[]" multiple="multiple">
+                                    <option></option>
+                                    @foreach($licenses as $id => $license)
+                                        <option value="{{ $license->id }}">{{ $license->product }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -98,6 +103,7 @@
         $(document).ready(function () {
             $('#employee_name').select2();
             $('#assets_number').select2();
+            $('#software').select2();
         });
 
         $(document).ready(function () {

@@ -22,6 +22,16 @@ class Assign extends Model
         return Asset::find($asset_ids);
     }
 
+    public function getSoftwareAttribute(string $value)
+    {
+        return License::find(json_decode($value));
+    }
+
+    public function setSoftwareAttribute(array $value)
+    {
+        $this->attributes['software'] = json_encode($value);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

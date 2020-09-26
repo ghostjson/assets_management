@@ -32,6 +32,13 @@ Route::prefix('/admin')->group(function (){
     Route::get('/assign/edit/{assign}', [AdminController::class, 'assignEditView'])->name('assignEditView');
     Route::post('/assign/edit/{assign}', [AdminController::class, 'assignUpdate'])->name('assignUpdate');
 
+
+    Route::get('/licenses', [AdminController::class, 'licensesView'])->name('licensesView');
+    Route::get('/licenses/create', [AdminController::class, 'licensesCreateView'])->name('licensesCreateView');
+    Route::post('/licenses/create', [AdminController::class, 'licenseCreate'])->name('licenseCreate');
+    Route::get('/licenses/edit/{license}', [AdminController::class, 'licenseEditView'])->name('licenseEditView');
+    Route::post('/licenses/edit/{license}', [AdminController::class, 'licenseEdit'])->name('licenseEdit');
+
     Route::get('/employee/{user}', [AdminController::class, 'employeeView'])->name('employeeView');
     Route::get('/employees', [AdminController::class, 'employeesView'])->name('employeesView');
     Route::get('/employees/create', [AdminController::class, 'employeesCreateView'])->name('employeesCreateView');
@@ -49,6 +56,8 @@ Route::prefix('/admin')->group(function (){
 
     Route::get('/settings', [AdminController::class, 'settingsView'])->name('settingsView');
     Route::post('/settings', [AdminController::class, 'updateSettings'])->name('updateSettings');
+
+
 });
 
 Route::prefix('employee')->group(function (){
