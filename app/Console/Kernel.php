@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('notify:software_expire')->daily();
+//         $schedule->command('inspire')->hourly();
     }
 
     /**

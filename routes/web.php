@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\License;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
@@ -76,3 +77,16 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('loginView');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+//Route::get('/test', function (){
+//   \Illuminate\Support\Facades\Mail::send(
+//       new \App\Mail\SoftwareExpireNotiMail([
+//           'license_expire' => '22/22/222',
+//           'product' => 'test product'
+//       ])
+//   );
+//});
+
+Route::get('/test', function (){
+
+
+});
