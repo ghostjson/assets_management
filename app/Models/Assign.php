@@ -16,6 +16,10 @@ class Assign extends Model
 
     protected $guarded = [];
 
+    protected $attributes = [
+        'software' => '[]'
+    ];
+
     public static function getAssetsOf(int $id)
     {
         $asset_ids = Assign::where('user_id', $id)->get()->pluck('asset_id');
@@ -24,6 +28,10 @@ class Assign extends Model
 
     public function getSoftwareAttribute(string $value)
     {
+        if(is_null($value))
+        {
+            return null;
+        }
         return License::find(json_decode($value));
     }
 
